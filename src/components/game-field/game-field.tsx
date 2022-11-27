@@ -5,23 +5,24 @@ import './game-field.css';
 type TgameField = {
   size: number;
 };
-type TgameFieldCoords = {};
+type TgameFieldCoords = {
+  coordX: number;
+  coordY: number;
+};
 export class GameField extends React.Component<TgameField> {
   private size: number;
-  private cellsArray: Array<JSX.Element>;
-  private coordsArray: Array<number>;
+  private cellsArray: Array<TgameFieldCoords>;
   constructor(props: TgameField) {
     super(props);
     this.size = props.size;
     this.cellsArray = this.generateCells(this.size);
-    this.coordsArray = [];
   }
-  generateCells(size: number): Array<JSX.Element> {
+  generateCells(size: number): Array<TgameFieldCoords> {
     const cellsArray = [];
     for (let i = 0; i < size; i++) {
       for (let j = 0; j < size; j++) {
-        cellsArray.push(<GameCell coordX={i} coordY={j} />);
-        this.coordsArray.push;
+        const cell = { coordX: i, coordY: j };
+        cellsArray.push(cell);
       }
     }
     return cellsArray;
@@ -29,13 +30,12 @@ export class GameField extends React.Component<TgameField> {
   render() {
     const gameFieldStyle = {
       display: 'grid',
-      gridTemplateColumns: `${this.size}`,
+      gridTemplateColumns: `repeat(${this.size})`,
     };
     return (
       <div className="game-field" style={gameFieldStyle}>
         {this.cellsArray.map((item, index) => {
-          <GameCell key={index.toString()} />;
-          return item;
+          return <GameCell key={index.toString()} coordX={item.coordX} coordY={item.coordY} />;
         })}
       </div>
     );
