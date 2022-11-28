@@ -35,7 +35,16 @@ export class GameField extends React.Component<TgameField> {
     return (
       <div className="game-field" style={gameFieldStyle}>
         {this.cellsArray.map((item, index) => {
-          return <GameCell key={index.toString()} coordX={item.coordX} coordY={item.coordY} />;
+          return (
+            <GameCell
+              callback={() => {
+                console.log('Jess');
+              }}
+              key={index.toString()}
+              coordX={item.coordX}
+              coordY={item.coordY}
+            />
+          );
         })}
       </div>
     );

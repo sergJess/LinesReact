@@ -1,5 +1,6 @@
 .game-cell{
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	background-color: #918f8d;
+	border: 2px solid #7b49b8;
 }
