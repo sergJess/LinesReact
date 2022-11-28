@@ -3,6 +3,8 @@ import './game-cell.css';
 type TgameCell = {
   coordX: number;
   coordY: number;
+  width: number;
+  height: number;
   callback: (x: number, y: number) => void;
 };
 type TgameCellState = { coordX: number; coordY: number };
@@ -19,6 +21,10 @@ export class GameCell extends React.Component<TgameCell, TgameCellState> {
     this.props.callback(this.state.coordX, this.state.coordY);
   }
   render() {
-    return <div onClick={this.clickToCell} className="game-cell"></div>;
+    const cellSizeStyle = {
+      width: `${this.props.width}px`,
+      height: `${this.props.height}px`,
+    };
+    return <div style={cellSizeStyle} onClick={this.clickToCell} className="game-cell"></div>;
   }
 }

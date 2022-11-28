@@ -4,7 +4,7 @@ export class App extends React.Component {
   render() {
     return (
       <div>
-        <GameField size={8} />
+        <GameField cellWidth={110} cellHeight={110} size={8} />
       </div>
     );
   }

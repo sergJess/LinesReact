@@ -4,6 +4,8 @@ import { GameCell } from '../game-cell/game-cell';
 import './game-field.css';
 type TgameField = {
   size: number;
+  cellWidth: number;
+  cellHeight: number;
 };
 type TgameFieldCoords = {
   coordX: number;
@@ -11,10 +13,14 @@ type TgameFieldCoords = {
 };
 export class GameField extends React.Component<TgameField> {
   private size: number;
+  private cellWidth: number;
+  private cellHeight: number;
   private cellsArray: Array<TgameFieldCoords>;
   constructor(props: TgameField) {
     super(props);
     this.size = props.size;
+    this.cellWidth = props.cellWidth;
+    this.cellHeight = props.cellHeight;
     this.cellsArray = this.generateCells(this.size);
   }
   generateCells(size: number): Array<TgameFieldCoords> {
@@ -30,7 +36,8 @@ export class GameField extends React.Component<TgameField> {
   render() {
     const gameFieldStyle = {
       display: 'grid',
-      gridTemplateColumns: `repeat(${this.size})`,
+      placeContent: 'center center',
+      gridTemplateColumns: `repeat(${this.size}, ${this.cellWidth}px)`,
     };
     return (
       <div className="game-field" style={gameFieldStyle}>
@@ -41,6 +48,8 @@ export class GameField extends React.Component<TgameField> {
                 console.log('Jess');
               }}
               key={index.toString()}
+              width={this.cellWidth}
+              height={this.cellHeight}
               coordX={item.coordX}
               coordY={item.coordY}
             />
