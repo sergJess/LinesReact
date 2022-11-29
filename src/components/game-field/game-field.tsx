@@ -1,5 +1,4 @@
 import React from 'react';
-import { resolvePath } from 'react-router-dom';
 import { GameCell } from '../game-cell/game-cell';
 import './game-field.css';
 type TgameField = {
