@@ -1,6 +1,6 @@
 import React from 'react';
 import './ball.css';
-type Tball = {
+type TballProps = {
   color: string;
   width: number;
   height: number;
@@ -9,8 +9,8 @@ type TballState = {
   isClicked: boolean;
   animationClass: string;
 };
-export class Ball extends React.Component<Tball, TballState> {
-  constructor(props: Tball) {
+export class Ball extends React.Component<TballProps, TballState> {
+  constructor(props: TballProps) {
     super(props);
     this.clickToBall = this.clickToBall.bind(this);
     this.state = {
@@ -31,8 +31,8 @@ export class Ball extends React.Component<Tball, TballState> {
   render() {
     const ballStyle = {
       backgroundColor: `${this.props.color}`,
-      width: `${this.props.width}`,
-      height: `${this.props.height}`,
+      width: `${this.props.width}px`,
+      height: `${this.props.height}px`,
     };
     return (
       <div

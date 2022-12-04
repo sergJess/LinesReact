@@ -5,6 +5,7 @@ type TgameField = {
   size: number;
   cellWidth: number;
   cellHeight: number;
+  children?: React.ReactNode;
 };
 type TgameFieldCoords = {
   coordX: number;
@@ -21,6 +22,7 @@ export class GameField extends React.Component<TgameField> {
     this.cellWidth = props.cellWidth;
     this.cellHeight = props.cellHeight;
     this.cellsArray = this.generateCells(this.size);
+    this.testClicks = this.testClicks.bind(this);
   }
   generateCells(size: number): Array<TgameFieldCoords> {
     const cellsArray = [];
@@ -32,6 +34,9 @@ export class GameField extends React.Component<TgameField> {
     }
     return cellsArray;
   }
+  testClicks() {
+    console.log(React.Children);
+  }
   render() {
     const gameFieldStyle = {
       display: 'grid',
@@ -39,7 +44,7 @@ export class GameField extends React.Component<TgameField> {
       gridTemplateColumns: `repeat(${this.size}, ${this.cellWidth}px)`,
     };
     return (
-      <div className="game-field" style={gameFieldStyle}>
+      <div onClick={this.testClicks} className="game-field" style={gameFieldStyle}>
         {this.cellsArray.map((item, index) => {
           return (
             <GameCell
