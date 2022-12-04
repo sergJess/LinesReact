@@ -9,11 +9,14 @@ export class FieldController {
     this.props = props;
     this.feildSheme = this.createFieldSheme(this.props.size);
   }
-  setBallPlace(coordX: number, coordY: number): void {
+  setBallToCell(coordX: number, coordY: number): void {
     this.feildSheme[coordX][coordY] = 1;
   }
-  setFieldCellEmpty(coordX: number, coordY: number): void {
+  setFieldCellFree(coordX: number, coordY: number): void {
     this.feildSheme[coordX][coordY] = 0;
+  }
+  isFieldCellFree(coordX: number, coordY: number): boolean {
+    return this.feildSheme[coordX][coordY] === 1 ? true : false;
   }
   private createFieldSheme(size: number): Array<Array<number>> {
     const fieldSheme: Array<Array<number>> = [];
