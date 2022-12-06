@@ -1,5 +1,6 @@
 import React from 'react';
 import { GameCell } from '../game-cell/game-cell';
+import { FieldController } from '../../controllers/field-controller/field-controller';
 import './game-field.css';
 type TgameField = {
   size: number;
@@ -16,12 +17,14 @@ export class GameField extends React.Component<TgameField> {
   private cellWidth: number;
   private cellHeight: number;
   private cellsArray: Array<TgameFieldCoords>;
+  private fieldController: FieldController;
   constructor(props: TgameField) {
     super(props);
     this.size = props.size;
     this.cellWidth = props.cellWidth;
     this.cellHeight = props.cellHeight;
     this.cellsArray = this.generateCells(this.size);
+    this.fieldController = new FieldController({ size: this.size });
     this.testClicks = this.testClicks.bind(this);
   }
   generateCells(size: number): Array<TgameFieldCoords> {
@@ -35,7 +38,7 @@ export class GameField extends React.Component<TgameField> {
     return cellsArray;
   }
   testClicks() {
-    console.log(React.Children);
+    console.log(this.fieldController.getFieldSheme());
   }
   render() {
     const gameFieldStyle = {

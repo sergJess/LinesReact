@@ -9,6 +9,9 @@ export class FieldController {
     this.props = props;
     this.feildSheme = this.createFieldSheme(this.props.size);
   }
+  getFieldSheme(): Array<Array<number>> {
+    return this.feildSheme;
+  }
   setBallToCell(coordX: number, coordY: number): void {
     this.feildSheme[coordX][coordY] = 1;
   }
