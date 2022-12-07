@@ -28,6 +28,7 @@ export class FieldController {
       for (let j = 0; j < size; j++) {
         fieldLine.push(0);
       }
+      fieldSheme.push(fieldLine);
     }
     return fieldSheme;
   }
