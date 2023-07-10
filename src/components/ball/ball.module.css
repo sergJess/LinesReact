@@ -1,0 +1,24 @@
+.ball {
+  border-radius: 50%;
+}
+.ball_animation_active {
+  position: relative;
+  animation-duration: 0.8s;
+  animation-name: ball;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ball {
+  25% {
+    top: -5px;
+  }
+  50% {
+    top: 0;
+  }
+  75% {
+    top: 5px;
+  }
+  100% {
+    top: 0;
+  }
+}

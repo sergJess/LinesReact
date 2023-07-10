@@ -7,6 +7,8 @@ function App() {
     <div>
       <GameField cellWidth={110} cellHeight={110} size={8} />
       <Ball color="#666889" width={50} height={50} />
+      <Ball color="#666555" width={50} height={50} />
+      <Ball color="#666111" width={50} height={50} />
     </div>
   );
 }
