@@ -1,15 +1,13 @@
 import React from 'react';
-import { GameField } from '../components/game-field/game-field';
-import { Ball } from '../components/ball/ball';
+import GameField from 'components/game-field-x/game-field';
+import Ball from '../components/ball/ball';
 
 function App() {
   return (
-    <div>
-      <GameField cellWidth={110} cellHeight={110} size={8} />
-      <Ball color="#666889" width={50} height={50} />
-      <Ball color="#666555" width={50} height={50} />
-      <Ball color="#666111" width={50} height={50} />
-    </div>
+    <>
+      <GameField size={8} cellSize={100} />
+      <Ball color="#449900" size={50} />
+    </>
   );
 }
 export default App;

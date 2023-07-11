@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import style from './ball.module.css';
 
-export function Ball({ color, width, height }: { color: string; width: number; height: number }) {
+function Ball({ color, size }: { color: string; size: number }) {
   const [isClicked, setClick] = useState(false);
   const ballStyle = {
     backgroundColor: `${color}`,
-    width: `${width}px`,
-    height: `${height}px`,
+    width: `${size}px`,
+    height: `${size}px`,
   };
   const clickToBall = () => {
     setClick(!isClicked);
@@ -20,3 +20,5 @@ export function Ball({ color, width, height }: { color: string; width: number; h
     ></div>
   );
 }
+
+export default Ball;
