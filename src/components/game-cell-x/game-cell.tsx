@@ -17,7 +17,7 @@ function GameCell({
   };
   const clickToCell = () => {
     const cell = cellRef.current!;
-    console.log(cell.getClientRects()[0]);
+    // console.log(cell.getClientRects()[0]);
   };
   return (
     <div onClick={clickToCell} className={style.gameCell} style={styles} ref={cellRef}>
