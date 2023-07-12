@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import style from './ball.module.css';
 
+export const ballColors = ['#449900', '#fcba03', '#0339fc', '#ca03fc', '#fc0303'];
 function Ball({ color, size }: { color: string; size: number }) {
   const [isClicked, setClick] = useState(false);
   const ballStyle = {
