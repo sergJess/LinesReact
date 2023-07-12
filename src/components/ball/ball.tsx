@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import style from './ball.module.css';
 
 export const ballColors = ['#449900', '#fcba03', '#0339fc', '#ca03fc', '#fc0303'];
-function Ball({ color, size }: { color: string; size: number }) {
+export default function Ball({ color, size }: { color: string; size: number }) {
   const ballRef = useRef<HTMLDivElement>(null);
   const ballStyle = {
     backgroundColor: `${color}`,
@@ -16,5 +16,3 @@ function Ball({ color, size }: { color: string; size: number }) {
 
   return <div style={ballStyle} onClick={clickToBall} ref={ballRef} className={style.ball}></div>;
 }
-
-export default Ball;
