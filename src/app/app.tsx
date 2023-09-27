@@ -1,11 +1,7 @@
 import React from 'react';
-import GameField from 'components/game-field-x/game-field';
+import Board from '../ui/board/board';
 
 function App() {
-  return (
-    <>
-      <GameField size={8} cellSize={100} />
-    </>
-  );
+  return <>{<Board size={8} />}</>;
 }
 export default App;

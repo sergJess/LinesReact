@@ -1,5 +1,5 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 :root {
   font-size: 10px;
@@ -7,13 +7,13 @@
   min-height: 100%;
   overflow-x: hidden;
 }
-body{
+body {
   position: relative;
   width: 100%;
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #000;
+  /* background-color: #000; */
 }
 a {
   text-decoration: none;
@@ -47,4 +47,8 @@ li {
   margin: 0;
   padding: 0;
 }
-
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
