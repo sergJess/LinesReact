@@ -3,6 +3,7 @@ import gameController, { Controller } from '../../controllers/game-controller/ga
 import drawBoard from '../drawBoard/draw-board';
 import findCellCenter from '../../helpers/find-cell-center/findCellCenter';
 import Ball from '../ball/ball';
+import redrawCell from 'ui/redraw-cell/redraw-cell';
 type TBoard = {
   size: number;
 };
@@ -65,20 +66,17 @@ export default function Board(props: TBoard) {
 }
 
 function userClick(objClick: TCanvasClick) {
+  let isClicked = false;
+  let anim = 0;
   if (!objClick.controller.isFieldEmpty(objClick.cellX, objClick.cellY)) {
-    objClick.context.clearRect(
-      (objClick.cellX + 0.5) * objClick.cellSize - Math.floor(objClick.cellSize / 2) + 1,
-      (objClick.cellY + 0.5) * objClick.cellSize - Math.floor(objClick.cellSize / 2) + 1,
-      objClick.cellSize - 4,
-      objClick.cellSize - 4
-    );
-    objClick.context.fillStyle = 'white';
-    objClick.context.fillRect(
-      (objClick.cellX + 0.5) * objClick.cellSize - Math.floor(objClick.cellSize / 2) + 1,
-      (objClick.cellY + 0.5) * objClick.cellSize - Math.floor(objClick.cellSize / 2) + 1,
-      objClick.cellSize - 4,
-      objClick.cellSize - 4
-    );
+    isClicked = !isClicked;
+    redrawCell({
+      color: 'white',
+      cellX: objClick.cellX,
+      cellY: objClick.cellY,
+      cellSize: objClick.cellSize,
+      context: objClick.context,
+    });
     const coords = findCellCenter(
       objClick.cellSize,
       objClick.cellX * objClick.cellSize,
@@ -86,28 +84,34 @@ function userClick(objClick: TCanvasClick) {
     );
     const colors = objClick.controller.getColors();
     const board = objClick.controller.getBoard();
+    let stepIndex = 0;
     function step() {
-      const th = 3;
       const yNum = coords[1];
       if (coords[1] > yNum) {
+        stepIndex++;
+        console.log(yNum);
         Ball({
           x: coords[0],
-          y: coords[1] + th * 2,
+          y: coords[1] + stepIndex,
           size: objClick.cellSize,
           color: colors[board[objClick.cellX][objClick.cellY]],
           context: objClick.context,
         });
       } else {
+        console.log(stepIndex);
+        stepIndex--;
         Ball({
           x: coords[0],
-          y: coords[1] - th,
+          y: coords[1] - stepIndex,
           size: objClick.cellSize,
           color: colors[board[objClick.cellX][objClick.cellY]],
           context: objClick.context,
         });
       }
-      window.requestAnimationFrame(step);
     }
-    window.requestAnimationFrame(step);
+    anim = window.requestAnimationFrame(step);
+    if (stepIndex < -300 || stepIndex > 300) {
+      window.cancelAnimationFrame(anim);
+    }
   }
 }
